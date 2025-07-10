@@ -2,7 +2,7 @@
 // Hook personalizado para obtener el pronóstico a 5 días
 
 import { useState, useEffect } from 'react';
-import { mockForecastData } from '../data/mockWeatherData';
+// import { mockForecastData } from '../data/mockWeatherData'; // Eliminar referencia a datos mock
 
 export interface ForecastItem {
   dt: number;
@@ -27,11 +27,15 @@ export function useForecast(city: string) {
     setLoading(true);
     setError('');
     try {
-      // Usar datos mock por ahora
-      setTimeout(() => {
-        setForecast(mockForecastData);
-        setLoading(false);
-      }, 1000);
+      // Aquí deberías implementar la llamada real a la API de OpenWeatherMap para el pronóstico
+      // Ejemplo:
+      // const API_KEY = 'TU_API_KEY';
+      // const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric&lang=es`);
+      // const data = await response.json();
+      // setForecast(data.list);
+      // setLoading(false);
+      setForecast([]); // Temporal: devuelve array vacío
+      setLoading(false);
     } catch (err: any) {
       setError(err.message || 'Error al obtener el pronóstico');
       setForecast([]);

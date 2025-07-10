@@ -1,12 +1,19 @@
 // WeatherDetails.tsx
 // Detalles adicionales del clima
 
-import React from 'react';
 import { Eye, Cloud, Droplets, Sun } from 'lucide-react';
-import type { WeatherData } from '../hooks/useWeather';
 
 interface WeatherDetailsProps {
-  data: WeatherData;
+  data: {
+    weather: { main: string; description: string; icon: string }[];
+    main: { temp: number; feels_like: number; humidity: number; pressure: number };
+    wind: { speed: number };
+    name: string;
+    sys: { country: string; sunrise?: number; sunset?: number };
+    visibility?: number;
+    clouds?: { all: number };
+    // Añade más propiedades si se usan en el componente
+  };
 }
 
 const WeatherDetails = ({ data }: WeatherDetailsProps) => {

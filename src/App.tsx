@@ -6,8 +6,18 @@ import { WeatherBackground } from './components/WeatherBackground';
 import { DateTime } from './components/DateTime';
 import { LocationButton } from './components/LocationButton';
 
+// Define una interfaz para los datos del clima
+interface WeatherData {
+  weather: { main: string; description: string; icon: string }[];
+  main: { temp: number; feels_like: number; humidity: number; pressure: number };
+  wind: { speed: number };
+  name: string;
+  sys: { country: string; sunrise?: number; sunset?: number };
+  // Añade más propiedades según sea necesario
+}
+
 const App = () => {
-  const [weatherData, setWeatherData] = useState(null);
+  const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [city, setCity] = useState<{ name: string; country: string; lat: number; lon: number } | null>(null);
